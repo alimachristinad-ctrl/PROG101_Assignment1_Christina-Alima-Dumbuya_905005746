@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <flowgorithm fileversion="4.2">
     <attributes>
-        <attribute name="name" value="HealthAlert Sierra Leone"/>
-        <attribute name="authors" value="Christian Dumbuya"/>
+        <attribute name="name" value="HealthCare Sierra Leone"/>
+        <attribute name="authors" value="Christina Alima Dumbuya"/>
         <attribute name="about" value="Community Healthcare Reporting and Triage Support System"/>
         <attribute name="saved" value="2026-10-04 11:46:57 pm"/>
         <attribute name="created" value="Q2hyaXN0aWFuIER1bWJ1eWE7Q0hSSVNUSUFOLUxBUFRPOzIwMjYtMTAtMDQ7MTE6NDI6MDEgcG07NDEzMA=="/>
