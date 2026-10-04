@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="HealthAlert Sierra Leone"/>
+        <attribute name="authors" value="Christian Dumbuya"/>
+        <attribute name="about" value="Community Healthcare Reporting and Triage Support System"/>
+        <attribute name="saved" value="2026-10-04 11:46:57 pm"/>
+        <attribute name="created" value="Q2hyaXN0aWFuIER1bWJ1eWE7Q0hSSVNUSUFOLUxBUFRPOzIwMjYtMTAtMDQ7MTE6NDI6MDEgcG07NDEzMA=="/>
+        <attribute name="edited" value="Q2hyaXN0aWFuIER1bWJ1eWE7Q0hSSVNUSUFOLUxBUFRPOzIwMjYtMTAtMDQ7MTE6NDY6NTcgcG07MTs0MjUz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="age" type="Integer" array="False" size=""/>
+            <declare name="symptom" type="String" array="False" size=""/>
+            <declare name="temperature" type="Real" array="False" size=""/>
+            <declare name="severity" type="String" array="False" size=""/>
+            <declare name="urgencyLevel" type="String" array="False" size=""/>
+            <declare name="recommendation" type="String" array="False" size=""/>
+            <declare name="isValid" type="Boolean" array="False" size=""/>
+            <declare name="submitAnotherReport" type="String" array="False" size=""/>
+            <assign variable="submitAnotherReport" expression="&quot;yes&quot;"/>
+            <while expression="submitAnotherReport == &quot;yes&quot;">
+                <output expression="&quot;Welcome to HealthCare Sierra Leone&quot;" newline="True"/>
+                <output expression="&quot;Community Healthcare Reporting and Triage Support System&quot;" newline="True"/>
+                <assign variable="isValid" expression="false"/>
+                <while expression="isValid == false">
+                    <output expression="&quot;Enter age:&quot;" newline="True"/>
+                    <input variable="age"/>
+                    <output expression="&quot;Enter main symptom:&quot;" newline="True"/>
+                    <input variable="symptom"/>
+                    <output expression="&quot;Enter temperature:&quot;" newline="True"/>
+                    <input variable="temperature"/>
+                    <output expression="&quot;Enter symptom severity (Mild, Moderate, Severe):&quot;" newline="True"/>
+                    <input variable="severity"/>
+                    <assign variable="isValid" expression="true"/>
+                    <if expression="age &lt;= 0">
+                        <then>
+                            <assign variable="isValid" expression="false"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="symptom == &quot;&quot;">
+                        <then>
+                            <assign variable="isValid" expression="false"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="temperature &lt;= 0">
+                        <then>
+                            <assign variable="isValid" expression="false"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="severity != &quot;Mild&quot; &amp;&amp; severity != &quot;Moderate&quot; &amp;&amp; severity != &quot;Severe&quot;">
+                        <then>
+                            <assign variable="isValid" expression="false"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="isValid == false">
+                        <then>
+                            <output expression="&quot;Invalid input. Please try again.&quot;" newline="True"/>
+                        </then>
+                        <else/>
+                    </if>
+                </while>
+                <if expression="severity == &quot;Severe&quot; &amp;&amp; temperature &gt;= 39.0">
+                    <then>
+                        <assign variable="urgencyLevel" expression="&quot;EMERGENCY&quot;"/>
+                    </then>
+                    <else>
+                        <if expression="severity == &quot;Severe&quot;">
+                            <then>
+                                <assign variable="urgencyLevel" expression="&quot;HIGH&quot;"/>
+                            </then>
+                            <else>
+                                <if expression="severity == &quot;Moderate&quot; OR temperature &gt;= 38.0">
+                                    <then>
+                                        <assign variable="urgencyLevel" expression="&quot;MODERATE&quot;"/>
+                                    </then>
+                                    <else>
+                                        <assign variable="urgencyLevel" expression="&quot;LOW&quot;"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <if expression="urgencyLevel == &quot;EMERGENCY&quot;">
+                    <then>
+                        <assign variable="recommendation" expression="&quot;Seek emergency medical assistance immediately.&quot;"/>
+                    </then>
+                    <else>
+                        <if expression="urgencyLevel == &quot;HIGH&quot;">
+                            <then>
+                                <assign variable="recommendation" expression="&quot;Seek medical attention as soon as possible.&quot;"/>
+                            </then>
+                            <else>
+                                <if expression="urgencyLevel == &quot;MODERATE&quot;">
+                                    <then>
+                                        <assign variable="recommendation" expression="&quot;Contact or visit a healthcare professional.&quot;"/>
+                                    </then>
+                                    <else>
+                                        <assign variable="recommendation" expression="&quot;Monitor the situation and consider routine healthcare advice.&quot;"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <output expression="&quot;Age: &quot; &amp; age" newline="True"/>
+                <output expression="&quot;Main Symptom: &quot; &amp; symptom" newline="True"/>
+                <output expression="&quot;Urgency Level: &quot; &amp; urgencyLevel" newline="True"/>
+                <output expression="&quot;Recommendation: &quot; &amp; recommendation" newline="True"/>
+                <output expression="&quot;Submit another report? Enter yes or no:&quot;" newline="True"/>
+                <input variable="submitAnotherReport"/>
+            </while>
+            <output expression="&quot;Thank you for using HealthCare Sierra Leone.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
